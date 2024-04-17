@@ -1,0 +1,31 @@
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+
+            <div [ngClass]="{'alert': true, 'alert-warning': !registrationSuccess, 'alert-info': registrationSuccess}">
+                <div *ngIf="registrationSuccess; else validationErrors" class="st-white">Registration successful!</div>
+                <div *ngIf="!registrationSuccess" class="st-white">Please fill out all fields.</div>
+                <ng-template #validationErrors>
+                    <div *ngIf="submitted && (!user.username || !user.email || !user.password)" class="text-white">Please fill out all fields.</div>
+                </ng-template>
+            </div>
+ 
+            <form class="form" (ngSubmit)="register()">
+                <h2 class="card-title">SIGNUP</h2>
+               
+                
+                <label for="email">Username</label>
+                <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" required="required" />
+
+                <label for="email">Email address</label>
+                <input type="email" class="form-controlt" id="email" [(ngModel)]="user.email" name="email" required="required" />
+
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required="required" />
+                
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

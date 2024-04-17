@@ -1,0 +1,33 @@
+<header class="header">
+    Employee Management App
+</header>
+<div class="table-container">
+    <h2>Employee List</h2>
+<button class="button update" id="add">Add Employee</button>
+<table>
+    <thead>
+    <tr>
+        <th>Employee First Name</th>
+        <th>Employee Last Name</th>
+        <th>Employee Email Id</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+        <tr *ngFor="let employee of employees">
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>
+              <a [routerLink]="['/employees/update', employee._id]" class="button update">UPDATE</a>
+              <a [routerLink]="['/employees/delete', employee._id]" class="button delete">DELETE</a>
+              <a href="/employees/details" class="button view">VIEW</a>
+            </td>
+          </tr>
+
+   
+   
+    </tbody>
+</table>
+</div>
